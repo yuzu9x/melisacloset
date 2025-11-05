@@ -55,14 +55,14 @@ function Game() {
     ],
   };
 
-  // Default display positions for each 
+  // Default display positions for each on the mannequins!!!
   const defaultDisplayPositions = {
     H1Img: { top: 190, left: 460, width: 150 },
     H2Img: { top: 197, left: 475, width: 115 },
     H3Img: { top: 186, left: 490, width: 150 },
     A1Img: { top: 310, left: 500, width: 80 },
     A2Img: { top: 485, left: 465, width: 170 },
-    A3Img: { top: 170, left: 460, width: 90 },
+    A3Img: { top: 260, left: 490, width: 90 },
     D1Img: { top: 250, left: 460, width: 200 },
     D2Img: { top: 260, left: 460, width: 200 },
     D3Img: { top: 270, left: 460, width: 200 },
