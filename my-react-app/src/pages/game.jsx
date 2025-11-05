@@ -57,21 +57,21 @@ function Game() {
 
   // Default display positions for each on the mannequins!!!
   const defaultDisplayPositions = {
-    H1Img: { top: 190, left: 460, width: 150 },
-    H2Img: { top: 197, left: 475, width: 115 },
-    H3Img: { top: 186, left: 490, width: 150 },
+    H1Img: { top: 190, left: 465, width: 150 },
+    H2Img: { top: 197, left: 478, width: 115 },
+    H3Img: { top: 186, left: 494, width: 150 },
     A1Img: { top: 310, left: 500, width: 80 },
-    A2Img: { top: 485, left: 465, width: 170 },
-    A3Img: { top: 260, left: 490, width: 90 },
-    D1Img: { top: 250, left: 460, width: 200 },
-    D2Img: { top: 260, left: 460, width: 200 },
-    D3Img: { top: 270, left: 460, width: 200 },
-    Sx1Img: { top: 400, left: 460, width: 90 },
-    Sx2Img: { top: 410, left: 460, width: 90 },
-    Sx3Img: { top: 420, left: 460, width: 90 },
-    Sh1Img: { top: 470, left: 460, width: 90 },
-    Sh2Img: { top: 480, left: 460, width: 90 },
-    Sh3Img: { top: 490, left: 460, width: 90 },
+    A2Img: { top: 485, left: 470, width: 170 },
+    A3Img: { top: 260, left: 495, width: 90 },
+    D1Img: { top: 295, left: 420, width: 257 },
+    D2Img: { top: 318, left: 410, width: 257 },
+    D3Img: { top: 300, left: 420, width: 254 },
+    Sx1Img: { top: 680, left: 490, width: 125 },
+    Sx2Img: { top: 800, left: 497, width: 99 },
+    Sx3Img: { top: 730, left: 495, width: 110 },
+    Sh1Img: { top: 865, left: 480, width: 125 },
+    Sh2Img: { top: 880, left: 490, width: 105 },
+    Sh3Img: { top: 835, left: 490, width: 110 },
   };
 
   const items = {
@@ -153,7 +153,7 @@ function Game() {
       }}
     >
       <button style={styles.clearButton} onClick={clearAll}>
-        CLEAR
+        clear
       </button>
 
       {/* Shelf items - clickable to add to canvas */}
@@ -259,7 +259,7 @@ function Game() {
                   onClick={() => removeItem(item.id)}
                   style={styles.removeButton}
                 >
-                  REMOVE ITEM
+                  REMOVE ITEMS
                 </button>
               </>
             );
@@ -276,7 +276,7 @@ const styles = {
     height: "100vh",
     position: "relative",
     overflow: "hidden",
-    fontFamily: "'Courier New', monospace",
+    fontFamily: "'Georgia', monospace",
     fontSize: "20px",
     color: "white",
   },
@@ -284,14 +284,17 @@ const styles = {
     position: "absolute",
     top: "20px",
     right: "20px",
-    backgroundColor: "none",
-    border: "none",
+    backgroundColor: "black",
+    border: "none", 
     color: "white",
     cursor: "pointer",
     padding: "10px 20px",
-    fontSize: "14px",
-    fontFamily: "'Courier New', monospace",
+    fontSize: "18px",
+    fontFamily: "'Georgia', monospace",
+    fontWeight: "bold", 
+    borderRadius: "0px", 
   },
+  
   itemThumbnail: {
     width: "90px",
     cursor: "pointer",
