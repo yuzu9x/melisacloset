@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Home from "./pages/Home";
+import Game from "./pages/Game";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Fade wrapper component
+function FadeRoutes() {
+  const location = useLocation();
+  const [fade, setFade] = useState(false);
+  const navigate = useNavigate();
+  const [pendingPath, setPendingPath] = useState(null);
+
+  // Trigger fade when pendingPath changes
+  useEffect(() => {
+    if (pendingPath) {
+      setFade(true); // fade to white
+      const timeout = setTimeout(() => {
+        navigate(pendingPath);
+        setFade(false); // fade out
+        setPendingPath(null);
+      }, 800); // duration matches CSS
+      return () => clearTimeout(timeout);
+    }
+  }, [pendingPath, navigate]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: "white",
+          zIndex: 9999,
+          pointerEvents: "none",
+          transition: "opacity 0.8s ease-in-out",
+          opacity: fade ? 1 : 0,
+        }}
+      />
+      <Routes location={location} key={location.pathname}>
+        <Route
+          path="/"
+          element={<Home startTransition={(path) => setPendingPath(path)} />}
+        />
+        <Route
+          path="/game"
+          element={<Game startTransition={(path) => setPendingPath(path)} />}
+        />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+function App() {
+  return (
+    <Router basename="/melisacloset">
+      <FadeRoutes />
+    </Router>
+  );
+}
+
+export default App;
+
