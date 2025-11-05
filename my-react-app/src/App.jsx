@@ -55,7 +55,7 @@ function FadeRoutes() {
 
 function App() {
   return (
-    <Router basename="/melisacloset">
+    <Router basename="/">
       <FadeRoutes />
     </Router>
   );
